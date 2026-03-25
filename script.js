@@ -68,6 +68,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const userAvatarImg = document.getElementById('user-avatar');
     const navLogout = document.getElementById('nav-logout');
 
+    // If Firebase isn't configured yet, keep overlay visible and show setup hint
+    if (!auth) {
+        if (loginOverlay) {
+            loginOverlay.style.display = 'flex';
+            const loginCard = loginOverlay.querySelector('.login-card');
+            if (loginCard && !loginCard.querySelector('#no-firebase-msg')) {
+                const msg = document.createElement('p');
+                msg.id = 'no-firebase-msg';
+                msg.style.cssText = 'margin-top:1rem; font-size:0.85rem; color:#e06c00; background:rgba(255,163,68,0.08); border:1px solid rgba(255,163,68,0.2); border-radius:10px; padding:0.75rem 1rem; line-height:1.5;';
+                msg.innerHTML = '⚠️ Firebase is not configured yet. Go to <strong>Settings → Firebase Setup</strong> to enter your credentials.';
+                loginCard.appendChild(msg);
+            }
+        }
+    }
+
     if (auth) {
         auth.onAuthStateChanged((user) => {
             if (user) {
@@ -1313,6 +1328,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize View
     console.log("Initializing app view...");
-    switchView('about');
+    if (!safeStorage.getItem('traderZenHasVisited')) {
+        switchView('about');
+        safeStorage.setItem('traderZenHasVisited', 'true');
+    } else {
+        switchView('dashboard');
+    }
 
 });

@@ -257,21 +257,21 @@
                                     Adherence (Check all applied)</label>
                                 <div style="display: flex; flex-direction: column; gap: 0.75rem;">
                                     <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
-                                        <input type="checkbox" name="rules" value="Respected Stop Loss"
+                                        <input type="checkbox" name="rules" value="Stop Loss"
                                             style="width: 18px; height: 18px; accent-color: var(--navy-dark);">
-                                        Respected
+
                                         Stop Loss
                                     </label>
                                     <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
-                                        <input type="checkbox" name="rules" value="Respected Break Even"
+                                        <input type="checkbox" name="rules" value="Break Even"
                                             style="width: 18px; height: 18px; accent-color: var(--navy-dark);">
-                                        Respected
+
                                         Break Even
                                     </label>
                                     <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
-                                        <input type="checkbox" name="rules" value="Respected Take Profit"
+                                        <input type="checkbox" name="rules" value="Take Profit"
                                             style="width: 18px; height: 18px; accent-color: var(--navy-dark);">
-                                        Respected
+
                                         Take Profit
                                     </label>
                                     <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
@@ -280,10 +280,10 @@
                                         Position Sizing
                                     </label>
                                     <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
-                                        <input type="checkbox" name="rules" value="Waited For Confirmation"
-                                            style="width: 18px; height: 18px; accent-color: var(--navy-dark);"> Waited
-                                        For
-                                        Confirmation
+                                        <input type="checkbox" name="rules" value="Candle Close"
+                                            style="width: 18px; height: 18px; accent-color: var(--navy-dark);"> Candle
+                                        Close
+
                                     </label>
                                     <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
                                         <input type="checkbox" name="rules" value="Max 2 Trades"
@@ -674,7 +674,8 @@
                                 <div class="ai-credits">
                                     <p>TraderZen was built using cutting-edge AI technologies, including
                                         <strong>Claude</strong>, <strong>Antigravity</strong>, and
-                                        <strong>ChatGPT</strong>. These tools assisted with:</p>
+                                        <strong>ChatGPT</strong>. These tools assisted with:
+                                    </p>
                                     <ul>
                                         <li><strong>Design Concepts:</strong> Crafting the minimalist, calm aesthetic
                                             and premium UI.</li>
@@ -724,12 +725,11 @@
     </div>
 
     <!-- Login Overlay -->
-    <div id="login-overlay" style="display: none;">
+    <div id="login-overlay" style="display: flex;">
         <div class="login-card">
-            <i data-lucide="shield" class="logo-icon"></i>
-            <h2>Welcome Back</h2>
-            <p style="margin-bottom: 1.5rem;">Please log in to access your trading sessions safely stored in the cloud.
-            </p>
+            <img src="logo.png" alt="TraderZen" style="width: 90px; height: 90px; object-fit: contain; margin-bottom: 0.5rem;">
+            <h2>Welcome to TraderZen</h2>
+            <p style="margin-bottom: 1.5rem;">Sign in to access your trading journal, securely stored in the cloud.</p>
 
             <button id="google-login-btn" class="google-btn"
                 style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.75rem; background: white; border: 1px solid var(--border-light); padding: 0.75rem; border-radius: 0.5rem; font-weight: 500; cursor: pointer; color: var(--navy-dark); transition: background 0.2s, box-shadow 0.2s;">

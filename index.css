@@ -856,6 +856,12 @@ body {
     margin-bottom: 1rem;
 }
 
+.login-card img {
+    display: block;
+    margin: 0 auto 0.75rem;
+    filter: drop-shadow(0 4px 16px rgba(255, 209, 102, 0.25));
+}
+
 .login-card h2 {
     font-size: 1.75rem;
     color: var(--navy-dark);
