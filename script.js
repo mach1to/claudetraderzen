@@ -460,6 +460,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sessionListContainer = document.getElementById('session-list');
     const weeklyReviewContent = document.getElementById('weekly-review-content');
     const viewSettings = document.getElementById('view-settings');
+    const viewAbout = document.getElementById('view-about');
+    const navAbout = document.getElementById('nav-about');
     const saveSettingsBtn = document.getElementById('save-settings-btn');
     const testConnectionBtn = document.getElementById('test-connection-btn');
     const sheetsUrlInput = document.getElementById('sheets-url-input');
@@ -485,6 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (viewJournalForm) viewJournalForm.style.display = 'none';
         if (viewWeeklyReview) viewWeeklyReview.style.display = 'none';
         if (viewSettings) viewSettings.style.display = 'none';
+        if (viewAbout) viewAbout.style.display = 'none';
 
         if (viewName === 'dashboard') {
             if (viewDashboard) viewDashboard.style.display = 'flex';
@@ -528,6 +531,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (fbConfiguredBadge) {
                 fbConfiguredBadge.style.display = (auth && auth.app) ? 'inline-flex' : 'none';
             }
+        } else if (viewName === 'about') {
+            if (viewAbout) viewAbout.style.display = 'flex';
+            if (navAbout) navAbout.classList.add('active');
+            
+            // Re-initialize icons just in case
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
     }
 
@@ -562,6 +571,13 @@ document.addEventListener('DOMContentLoaded', () => {
         navSettings.addEventListener('click', (e) => {
             e.preventDefault();
             switchView('settings');
+        });
+    }
+
+    if (navAbout) {
+        navAbout.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchView('about');
         });
     }
     if (saveFirebaseBtn) {
@@ -1297,6 +1313,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize View
     console.log("Initializing app view...");
-    switchView('dashboard');
+    switchView('about');
 
 });

@@ -909,3 +909,135 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* =======================================
+   About Section Styles
+   ======================================= */
+.about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 2rem;
+}
+
+.about-hero {
+    text-align: center;
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255, 209, 102, 0.05) 100%);
+    border: 1px solid rgba(255, 209, 102, 0.2);
+}
+
+.about-description {
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.about-description p {
+    margin-bottom: 1.5rem;
+}
+
+.screenshot-section {
+    padding: 1.5rem;
+}
+
+.app-mockup {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: var(--cream-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.mockup-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-tertiary);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.tech-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tech-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.tech-list li i {
+    width: 18px;
+    height: 18px;
+    color: #10B981;
+}
+
+.ai-credits ul {
+    list-style: none;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.ai-credits li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.ai-credits li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--yellow-accent);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.about-footer {
+    padding: 3rem;
+    background: var(--navy-dark);
+    color: white;
+}
+
+.about-footer p {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.github-btn {
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-hero h1 {
+        font-size: 2rem !important;
+    }
+}
