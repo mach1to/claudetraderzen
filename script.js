@@ -25,12 +25,14 @@ const safeStorage = {
    Enter your config in Settings → Firebase Setup.
    ======================================================== */
 function loadFirebaseConfig() {
-    try {
-        const raw = window.localStorage.getItem('traderZenFirebaseConfig');
-        return raw ? JSON.parse(raw) : null;
-    } catch (e) {
-        return null;
-    }
+    return {
+        apiKey: "AIzaSyCfbEhu7LrC9s0WWxAmyLyh2zXGHGSB1Go",
+        authDomain: "traderzen-debe4.firebaseapp.com",
+        projectId: "traderzen-debe4",
+        storageBucket: "traderzen-debe4.firebasestorage.app",
+        messagingSenderId: "338237043409",
+        appId: "1:338237043409:web:f67cb76a47fc2a7fdd8bf0"
+    };
 }
 
 function saveFirebaseConfig(cfg) {
@@ -44,18 +46,13 @@ function saveFirebaseConfig(cfg) {
 
 // Initialize Firebase App
 let auth, db;
-const _savedFirebaseConfig = loadFirebaseConfig();
-if (_savedFirebaseConfig && _savedFirebaseConfig.apiKey && _savedFirebaseConfig.apiKey !== 'YOUR_API_KEY') {
-    try {
-        firebase.initializeApp(_savedFirebaseConfig);
-        auth = firebase.auth();
-        db = firebase.firestore();
-        console.log("Firebase initialized successfully.");
-    } catch (error) {
-        console.error("Firebase initialization failed:", error);
-    }
-} else {
-    console.warn("Firebase config not found. Please enter your credentials in Settings → Firebase Setup.");
+try {
+    firebase.initializeApp(loadFirebaseConfig());
+    auth = firebase.auth();
+    db = firebase.firestore();
+    console.log("Firebase initialized successfully.");
+} catch (error) {
+    console.error("Firebase initialization failed:", error);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -67,21 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const userNameSpan = document.getElementById('user-name');
     const userAvatarImg = document.getElementById('user-avatar');
     const navLogout = document.getElementById('nav-logout');
-
-    // If Firebase isn't configured yet, keep overlay visible and show setup hint
-    if (!auth) {
-        if (loginOverlay) {
-            loginOverlay.style.display = 'flex';
-            const loginCard = loginOverlay.querySelector('.login-card');
-            if (loginCard && !loginCard.querySelector('#no-firebase-msg')) {
-                const msg = document.createElement('p');
-                msg.id = 'no-firebase-msg';
-                msg.style.cssText = 'margin-top:1rem; font-size:0.85rem; color:#e06c00; background:rgba(255,163,68,0.08); border:1px solid rgba(255,163,68,0.2); border-radius:10px; padding:0.75rem 1rem; line-height:1.5;';
-                msg.innerHTML = '⚠️ Firebase is not configured yet. Go to <strong>Settings → Firebase Setup</strong> to enter your credentials.';
-                loginCard.appendChild(msg);
-            }
-        }
-    }
 
     if (auth) {
         auth.onAuthStateChanged((user) => {
